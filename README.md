@@ -18,6 +18,7 @@ https://github.com/kana112233/tranlate-project.git
 log
 第一版: 翻译选中的文字
 第二版: 选中文件夹翻译
+-新建action不能使用。--删除项目里面的插件，重新启动。
 
 
 

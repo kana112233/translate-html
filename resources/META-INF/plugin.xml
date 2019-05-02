@@ -29,6 +29,11 @@
     </extensions>
 
     <actions>
+        <action id="translateFolder" class="com.youzi.action.TranslateFolderAction" text="翻译文件夹"
+                description="翻译文件夹">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </action>
+
         <!-- Add your actions here -->
         <action id="Translate" class="com.youzi.action.TranslateAction" text="全文翻译">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
