@@ -104,7 +104,6 @@ public class GoogleTranslateUtil {
             }
 
             GoogleTranslateUtil.editor = mEditor;
-//            showPopupBalloon(result.toString());
             return result.toString();
         }
         return null;

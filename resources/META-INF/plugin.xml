@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.py.translate</id>
     <name>全文翻译</name>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <vendor email="makey22112@gmail.com" url="http://www.wordword.xyz">哈哈</vendor>
 
     <description><![CDATA[

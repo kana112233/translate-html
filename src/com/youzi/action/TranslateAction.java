@@ -36,7 +36,7 @@ public class TranslateAction extends AnAction {
      * 执行翻译操作
      * @param event
      */
-    public void executeTranslate(AnActionEvent event){
+    private void executeTranslate(AnActionEvent event){
         final Editor mEditor = (Editor) event.getData(PlatformDataKeys.EDITOR);
 
         if (null == mEditor) {
@@ -74,7 +74,7 @@ public class TranslateAction extends AnAction {
 
     }
 
-    public static List<String> getNoTranslateFlag(){
+    private static List<String> getNoTranslateFlag(){
         List<String> noTranslateFlag = new ArrayList();
         noTranslateFlag.add("```");
         return noTranslateFlag;
