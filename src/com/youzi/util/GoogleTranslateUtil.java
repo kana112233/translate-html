@@ -1,10 +1,6 @@
 package com.youzi.util;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.ui.popup.Balloon;
@@ -17,6 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.fest.swing.timing.Timeout;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -24,12 +21,7 @@ import javax.script.ScriptEngineManager;
 import javax.swing.*;
 import javax.swing.event.HyperlinkListener;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.Console;
-import java.io.File;
-import java.io.FileReader;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

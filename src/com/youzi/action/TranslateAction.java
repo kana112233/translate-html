@@ -26,6 +26,8 @@ import static java.util.regex.Pattern.compile;
  */
 public class TranslateAction extends AnAction {
 
+    TranslateJob translateJob = new TranslateJob();
+
     @Override
     public void actionPerformed(AnActionEvent event) {
         Logger.init(this.getClass().getSimpleName(), 1);
@@ -49,7 +51,7 @@ public class TranslateAction extends AnAction {
         StringBuilder translateString = new StringBuilder();
         for (String string : strings) {
             System.err.println(strings);
-            translateString.append(parseString(mEditor, string)+"\n\n");
+            translateString.append(translateJob.parseString(mEditor, string)+"\n\n");
         }
         //修正文本
         //1 批量修改中文括号到英文
@@ -62,7 +64,7 @@ public class TranslateAction extends AnAction {
             String path = psiFile.getVirtualFile().getParent().getPath();
             int index = psiFile.getName().lastIndexOf(".");
             String fileName = psiFile.getName().substring(0, index);
-            File file = new File(path+File.separator+fileName+"_py.md");
+            File file = new File(path+File.separator+fileName+".hj");
             try {
                 FileOutputStream os = new FileOutputStream(file);
                 os.write(backString.getBytes("UTF-8") );
@@ -74,44 +76,7 @@ public class TranslateAction extends AnAction {
 
     }
 
-    private static List<String> getNoTranslateFlag(){
-        List<String> noTranslateFlag = new ArrayList();
-        noTranslateFlag.add("```");
-        return noTranslateFlag;
-    }
 
-    private String parseString(Editor mEditor, String selectText) {
-        List<String> noTranslateFlag= getNoTranslateFlag();
-        for (String flag : noTranslateFlag) {
-            int index = selectText.indexOf(flag);
-            if (index >= 0) {
-                return selectText;
-            }
-        }
-        //  \[.*]\(.*\)  当匹配到这个正则就截取，保存 以后在拼接
-        if (null != selectText && !"".equals(selectText.trim())) {
-            selectText = selectText.trim();
-            if (selectText.trim().length() <= Contstants.MAX_FANYI_SIZE) {
-                try {
-                    Pattern p = compile("[\u4e00-\u9fa5]");
-                    Matcher m = p.matcher(selectText.trim());
-                    String opeName = m.find() ? Contstants.CN_TO_EN : Contstants.EN_TO_CN;
-                    String result = GoogleTranslateUtil.translate(selectText, opeName, mEditor);
-                    if (null == result) {
-                        Logger.error("翻译错误,请重试!");
-                        return "";
-                    }
-                    Logger.info(opeName, result);
-                    return result;
-                } catch (Exception e) {
-                    Logger.error("程序异常,请重试!");
-                }
-            } else {
-                Logger.error("单次翻译长度不可超过" + Contstants.MAX_FANYI_SIZE + ".");
-            }
-        }
-        return "";
-    }
 
 
 }
