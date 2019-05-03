@@ -101,7 +101,6 @@ public class GoogleTranslateUtil {
         return null;
     }
 
-
     /**
      * 根据类型选择接口地址
      *

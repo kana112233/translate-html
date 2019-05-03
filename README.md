@@ -1,3 +1,6 @@
+更新项目到这里，采用gradle管理
+https://github.com/kana112233/translate-plugin-gradle.git
+
 改编来自
 https://gitee.com/tangyouzhi/GoogleTranslate.git
 
